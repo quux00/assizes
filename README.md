@@ -1,4 +1,4 @@
-# Overview
+## Overview
 
 The assizes library is a helper library for the standard Go testing package.  It provides some basic `assert` functionality, allowing your Go tests to be less verbose.  The assert style is patterned after Java's JUnit style.
 
@@ -7,12 +7,12 @@ Only a few helpers have been added so far - the ones I've needed for my tests.  
 The library name refers to the old British [Courts of Assizes](https://en.wikipedia.org/wiki/Assizes), which, being an American, I used to read and wonder about in my college days while reading lots of Dickens, Thackeray and George Eliot.
 
 
-# Install
+## Install
 
-    go get quux00/assizes
+    go get github.com/quux00/assizes
 
 
-# Usage
+## Usage
 
 Wrap the `testing.T` pointer in an Assize and then use the `Assert` methods on the Assize.  Any errors will be reported as failing on the line you called the assert from.
 
@@ -43,6 +43,16 @@ Wrap the `testing.T` pointer in an Assize and then use the `Assert` methods on t
 
         // &etc.
     }
+
+Failure messages look like:
+
+    --- FAIL: TestSize (0.00 seconds)
+        assizes.go:36: assertEqual failed (line 30). exp: 1; act: 0
+
+The API for `AssertEquals` is to pass in expected first and then actual.
+The line number in parens ("line 30" above) refers to the line from which you called the `assert` method.
+
+
 
 
 # LICENSE
